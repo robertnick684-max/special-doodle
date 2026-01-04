@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>UltraDownloader - AI Powered</title>
+</head>
+<body class="bg-slate-900 text-white font-sans">
+
+    <nav class="p-6 flex justify-between items-center border-b border-slate-800">
+        <h1 class="text-2xl font-bold bg-gradient-to-r from-blue-400 to-emerald-400 bg-clip-text text-transparent">UltraDownloader</h1>
+        <div class="space-x-4 text-slate-400 text-sm">
+            <a href="#">Engine: Gemini 3 Flash</a>
+            <a href="#" class="hover:text-white">API Status: Online</a>
+        </div>
+    </nav>
+
+    <main class="max-w-6xl mx-auto mt-20 px-4">
+        <div class="text-center">
+            <h2 class="text-5xl font-extrabold mb-6">Download any video in <span class="text-blue-500">8K Quality</span></h2>
+            <p class="text-slate-400 mb-10">Fast, free, and powered by Gemini 3 Flash AI.</p>
+            
+            <div class="relative max-w-2xl mx-auto">
+                <input type="text" id="urlInput" placeholder="Paste YouTube, FB, or IG link here..." 
+                       class="w-full p-6 rounded-2xl bg-slate-800 border border-slate-700 focus:border-blue-500 outline-none text-lg">
+                <button class="absolute right-2 top-2 bottom-2 px-8 bg-blue-600 rounded-xl hover:bg-blue-500 transition font-bold">START</button>
+            </div>
+        </div>
+
+        <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="p-6 bg-slate-800/50 border border-slate-700 rounded-2xl">
+                <span class="text-xs text-blue-400 font-bold uppercase">Recommended Tool</span>
+                <h3 class="text-lg font-bold mt-2">Edit this video in 4K</h3>
+                <p class="text-sm text-slate-400 mt-2">Use the AI editor to add subtitles and effects instantly.</p>
+                <a href="YOUR_AFFILIATE_LINK" class="block mt-4 text-center py-2 bg-slate-700 rounded-lg hover:bg-slate-600">Try Editor</a>
+            </div>
+
+            <div id="resultFrame" class="md:col-span-1 p-6 bg-blue-900/20 border border-blue-500/30 rounded-2xl hidden">
+                <img id="thumb" src="" class="rounded-lg w-full mb-4">
+                <h4 id="title" class="font-bold truncate">Video Title</h4>
+                <a id="dlButton" href="#" class="block mt-4 text-center py-3 bg-emerald-500 rounded-xl font-bold text-slate-900">DOWNLOAD NOW</a>
+            </div>
+
+            <div class="p-6 bg-slate-800/50 border border-slate-700 rounded-2xl">
+                <span class="text-xs text-emerald-400 font-bold uppercase">Security Check</span>
+                <h3 class="text-lg font-bold mt-2">Protect your IP</h3>
+                <p class="text-sm text-slate-400 mt-2">Always use a VPN when downloading from social media.</p>
+                <a href="YOUR_AFFILIATE_LINK" class="block mt-4 text-center py-2 bg-slate-700 rounded-lg hover:bg-slate-600">Get VPN</a>
+            </div>
+        </div>
+    </main>
+
+</body>
+</html>
