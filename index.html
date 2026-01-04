@@ -4,116 +4,65 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>UltraDownloader AI | 8K Video Downloader</title>
-    <style>
-        .glass { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(10px); }
-        .gradient-text { background: linear-gradient(to right, #60a5fa, #34d399); -webkit-background-clip: text; color: transparent; }
-    </style>
+    <title>UltraDownloader AI</title>
 </head>
-<body class="bg-slate-900 text-white min-h-screen font-sans">
-
-    <nav class="p-6 flex justify-between items-center border-b border-slate-800 glass sticky top-0 z-50">
-        <h1 class="text-2xl font-bold gradient-text">UltraDownloader AI</h1>
-        <div class="hidden md:flex space-x-6 text-slate-400 text-sm font-medium">
-            <span>Powered by Gemini 3 Flash</span>
-            <span class="text-emerald-400">● Server Active</span>
-        </div>
+<body class="bg-slate-900 text-white min-h-screen">
+    <nav class="p-6 border-b border-slate-800 text-center md:text-left">
+        <h1 class="text-2xl font-bold text-blue-400">UltraDownloader AI</h1>
     </nav>
 
-    <main class="max-w-5xl mx-auto mt-12 px-6">
+    <main class="max-w-4xl mx-auto mt-20 px-6">
         <div class="text-center mb-12">
-            <h2 class="text-4xl md:text-6xl font-black mb-4 tracking-tight">Download Social Media <br><span class="text-blue-500">Videos in Seconds.</span></h2>
-            <p class="text-slate-400 text-lg">No limits. No popups. High speed 8K quality.</p>
+            <h2 class="text-5xl font-extrabold mb-4">8K Video Downloader</h2>
+            <p class="text-slate-400">Enter a URL to generate direct download links instantly.</p>
         </div>
 
-        <div class="glass p-2 rounded-3xl border border-slate-700 shadow-2xl max-w-3xl mx-auto">
-            <div class="flex flex-col md:flex-row gap-2">
-                <input type="text" id="urlInput" placeholder="Paste YouTube, Instagram, or FB link..." 
-                       class="flex-1 bg-transparent p-4 outline-none text-white placeholder-slate-500 text-lg">
-                <button onclick="startDownload()" id="mainBtn" 
-                        class="bg-blue-600 hover:bg-blue-500 transition px-10 py-4 rounded-2xl font-bold shadow-lg shadow-blue-900/20">
-                    GET VIDEO
-                </button>
-            </div>
+        <div class="bg-slate-800 p-2 rounded-2xl flex flex-col md:flex-row gap-2 shadow-2xl">
+            <input type="text" id="urlInput" placeholder="Paste YouTube, IG, or FB link..." 
+                   class="flex-1 bg-transparent p-4 outline-none text-lg">
+            <button onclick="startDownload()" id="mainBtn" class="bg-blue-600 px-10 py-4 rounded-xl font-bold hover:bg-blue-500 transition">GET VIDEO</button>
         </div>
 
-        <div id="resultFrame" class="mt-10 max-w-2xl mx-auto hidden">
-            <div class="glass p-6 rounded-3xl border border-blue-500/30 animate-pulse">
-                <img id="thumb" src="" class="rounded-2xl w-full object-cover mb-4 shadow-xl">
-                <h3 id="title" class="text-xl font-bold truncate mb-4 text-center text-blue-100 italic">Video Title</h3>
-                
-                <a id="dlButton" href="#" target="_blank" 
-                   class="block w-full text-center py-5 bg-gradient-to-r from-emerald-500 to-teal-600 rounded-2xl font-black text-slate-900 text-xl hover:scale-[1.02] transition">
-                   DOWNLOAD (8K ULTRA HD)
-                </a>
-                <p class="text-center text-xs text-slate-500 mt-3 uppercase tracking-widest">Verified Secure by Gemini AI</p>
-            </div>
-        </div>
-
-        <div class="mt-20 grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
-            <div class="p-8 rounded-3xl border border-slate-800 bg-slate-800/30 hover:border-slate-700 transition">
-                <span class="text-blue-400 font-bold text-xs tracking-widest uppercase">Sponsored</span>
-                <h4 class="text-xl font-bold mt-2">Protect Your Privacy</h4>
-                <p class="text-slate-400 mt-2">Downloading videos exposes your IP. Use a secure VPN to stay anonymous.</p>
-                <a href="YOUR_AFFILIATE_LINK" class="inline-block mt-4 text-blue-400 font-bold border-b border-blue-400 hover:text-blue-300">Get 70% Off VPN &rarr;</a>
-            </div>
-
-            <div class="p-8 rounded-3xl border border-slate-800 bg-slate-800/30 hover:border-slate-700 transition">
-                <span class="text-emerald-400 font-bold text-xs tracking-widest uppercase">Pro Tip</span>
-                <h4 class="text-xl font-bold mt-2">Edit Like a Pro</h4>
-                <p class="text-slate-400 mt-2">Need to remove background or add subtitles? Use our AI recommended editor.</p>
-                <a href="YOUR_AFFILIATE_LINK" class="inline-block mt-4 text-emerald-400 font-bold border-b border-emerald-400 hover:text-emerald-300">Open AI Editor &rarr;</a>
-            </div>
+        <div id="resultFrame" class="mt-10 hidden bg-slate-800 p-6 rounded-3xl border border-blue-500/30">
+            <img id="thumb" src="" class="rounded-xl w-full mb-4 max-h-80 object-cover">
+            <h3 id="title" class="text-xl font-bold mb-6 text-center">Video Title</h3>
+            <a id="dlButton" href="#" target="_blank" class="block w-full py-5 bg-emerald-500 rounded-2xl text-slate-900 font-black text-center text-xl">DOWNLOAD NOW (8K)</a>
         </div>
     </main>
 
     <script>
         async function startDownload() {
-            const urlInput = document.getElementById('urlInput').value;
-            const resultFrame = document.getElementById('resultFrame');
-            const mainBtn = document.getElementById('mainBtn');
-            const dlButton = document.getElementById('dlButton');
-            
-            if(!urlInput) {
-                alert("Bro, paste a link first!");
-                return;
-            }
+            const url = document.getElementById('urlInput').value;
+            const btn = document.getElementById('mainBtn');
+            if(!url) return alert("Bro, paste a link!");
 
-            // Change button state
-            mainBtn.innerText = "AI PROCESSING...";
-            mainBtn.disabled = true;
+            btn.innerText = "PROCESSING...";
+            btn.disabled = true;
 
             try {
-                // !!! REPLACE THE LINK BELOW WITH YOUR ACTUAL RENDER URL !!!
+                // !!! REPLACE THIS WITH YOUR ACTUAL RENDER LINK !!!
                 const renderUrl = 'https://ultra-downloader-api.onrender.com/get_video';
-                
+
                 const response = await fetch(renderUrl, {
                     method: 'POST',
                     headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify({ url: urlInput })
+                    body: JSON.stringify({ url: url })
                 });
-
                 const data = await response.json();
-
+                
                 if(data.url) {
                     document.getElementById('thumb').src = data.thumbnail;
                     document.getElementById('title').innerText = data.title;
-                    dlButton.href = data.url;
-                    
-                    // Show result
-                    resultFrame.classList.remove('hidden');
-                    mainBtn.innerText = "SUCCESS!";
+                    document.getElementById('dlButton').href = data.url;
+                    document.getElementById('resultFrame').classList.remove('hidden');
                 } else {
-                    alert("Could not find video. Try another link.");
+                    alert("Error: " + data.error);
                 }
-
-            } catch (error) {
-                console.error(error);
-                alert("Server is sleeping or starting up. Give it 30 seconds and try again!");
-            } finally {
-                mainBtn.innerText = "GET VIDEO";
-                mainBtn.disabled = false;
+            } catch (e) {
+                alert("Server is still waking up. Try again in 30 seconds!");
             }
+            btn.innerText = "GET VIDEO";
+            btn.disabled = false;
         }
     </script>
 </body>
